@@ -2,9 +2,21 @@ import React from 'react'
 import logo from '../icons/logo.png'
 import { useNavigate, NavLink } from "react-router-dom";
 import SideNavLink from "./SideNavLink";
+import { loginReset, logout } from '../store/slices/studentSlices';
+import { useDispatch } from 'react-redux';
 
 
 const InstructorSideNav = () => {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        console.log("hello");
+        dispatch(logout());
+        dispatch(loginReset())
+        navigate("/login");
+    }
     return (
         <>
             <div

@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../icons/logo.png'
 
 import { Link, NavLink } from 'react-router-dom'
 
@@ -9,7 +10,7 @@ const Header = () => {
                 <div className="flex justify-between items-center h-full px-[100px] mobile:px-8">
                     <div id='brand' className="w-[100px]">
                         <NavLink to="/host">
-                            {/* <img className="w-full" src={logo} alt="" /> */}
+                            <img className="w-[60%]" src={logo} alt="" />
                         </NavLink>
                     </div>
                     <Link to="/support">

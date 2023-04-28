@@ -10,6 +10,7 @@ const getAllCourses = async (req, res) => {
 }
 
 const createCourse = async (req, res) => {
+  console.log("req", req.body);
     const {id} = req.user;
     const instructor = await Instructor.findById(id);
     if(!instructor) {

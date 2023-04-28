@@ -31,8 +31,8 @@ const TextBox2 = ({
           value={value}
           onChange={handleInputs}
           className="w-full bg-lightgrey rounded-xl p-[10px] outline-none"
-          readOnly={readOnly}
-          style={{cursor: `${disabled ? 'not-allowed' : 'inherit'}`}}
+          // readOnly={readOnly}
+          // style={{cursor: `${disabled ? 'not-allowed' : 'inherit'}`}}
         />
       </div>
     </>

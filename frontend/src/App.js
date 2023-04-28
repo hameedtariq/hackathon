@@ -9,6 +9,8 @@ import MyCoursesScreen from './screens/MyCoursesScreen';
 import InstructorDashboard from './screens/InstructorDashboard';
 import SignupScreen from './screens/SignupScreen';
 import AssignmentDetailsScreen from './screens/student/AssignmentDetailsScreen';
+import CreateCourseScreen from './screens/CreateCourseScreen';
+import InstructorSideNav from './components/InstructorSideNav';
 
 
 function App() {
@@ -28,11 +30,12 @@ function App() {
       {Info && Info.instructorId &&
         // instructor
         <>
-          <SideNav />
+          <InstructorSideNav />
           < Routes >
             <Route path='/login' element={<LoginScreen />} />
             <Route path="/student/signup" element={<SignupScreen />} />
             <Route path='/instructor/dashboard' element={<InstructorDashboard />} />
+            <Route path='/instructor/createcourse' element={<CreateCourseScreen />} />
           </Routes>
         </>
       }

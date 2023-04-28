@@ -15,6 +15,8 @@ const CourseDetailsScreen = ({ type }) => {
 
     }
 
+    
+
     return (
         <div className="flex w-full h-screen overflow-auto">
             <div className="flex flex-col w-full mobile:w-full px-10 tablet:px-0 mx-auto">

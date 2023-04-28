@@ -14,7 +14,7 @@ const loginSlice = createSlice({
       state.error = ''
     },
     logout: (state) => {
-      state.adminInfo = null
+      state.Info = null
       localStorage.removeItem('Info')
       localStorage.clear()
     },
@@ -77,7 +77,7 @@ const studentSignupSlice = createSlice({
 
 // Actions
 export const { loginReset, logout } = loginSlice.actions
-export const { signupReset } = signupReset.actions
+// export const { signupReset } = signupReset.actions
 
 
 // Reducers

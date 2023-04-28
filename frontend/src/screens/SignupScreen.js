@@ -49,10 +49,7 @@ const SignupScreen = () => {
 
   useEffect(() => {
     if (success) {
-      setTimeout(() => {
 
-        dispatch(signupReset())
-      }, 1000);
       navigate("/login")
     }
   }, [success])
