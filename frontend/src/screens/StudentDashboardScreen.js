@@ -59,7 +59,7 @@ const StudentDashboardScreen = () => {
                 <AssignmentCard
                   title={assignment.title}
                   description={assignment.description}
-                  courseName={assignment.courseId.courseName}
+                  courseName={assignment.courseId?.courseName}
                   deadline={
                     assignment.deadline
                       ? assignment.deadline

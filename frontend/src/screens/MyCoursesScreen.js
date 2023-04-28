@@ -9,8 +9,7 @@ const MyCoursesScreen = () => {
     <div className='flex w-full h-screen overflow-auto'>
       <div className='flex flex-col w-full mx-auto h-full'>
         <div className='w-full m-auto h-full p-5'>
-          <h1 className='font-bold text-base3'>My Courses</h1>
-
+          <h1 className='font-bold text-base3'>My Courses</h1>0
           {/* map function here */}
           <div
             className={`flex shadow-4xl bg-white my-3 rounded-sm p-3 cursor-pointer border`}
@@ -23,7 +22,7 @@ const MyCoursesScreen = () => {
                   <div className='w-full flex flex-col gap-2'>
                     <div className='flex items-center justify-between py-1 border-b border-lightborder w-full pr-5'>
                       <p className='text-base2 font-semibold'>Course Title:</p>
-                      <p className='text-base3 font-bold'>{`${course.courseId.courseName}`}</p>
+                      <p className='text-base3 font-bold'>{`${course.courseId?.courseName}`}</p>
                     </div>
                     <div className='flex items-center justify-between py-1 border-b border-lightborder w-full pr-5'>
                       <p className='text-base2 font-semibold'>Credit Hours:</p>
@@ -31,7 +30,7 @@ const MyCoursesScreen = () => {
                     </div>
                     <div className='flex items-center justify-between py-1 border-b border-lightborder w-full pr-5'>
                       <p className='text-base2 font-semibold'>Course Code:</p>
-                      <p className='text-base3 font-bold'>{`${course.courseId.courseCode}`}</p>
+                      <p className='text-base3 font-bold'>{`${course.courseId?.courseCode}`}</p>
                     </div>
                     <div className='flex items-center justify-between py-1 border-b border-lightborder w-full pr-5'>
                       <p className='text-base2 font-semibold'>Course Status:</p>
