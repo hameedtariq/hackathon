@@ -14,6 +14,8 @@ import { login } from "../store/thunks/studentThunks";
 const LoginScreen = () => {
   const [initialValues] = useState({
     email: "",
+    password: "",
+    role: ""
   });
 
   const { values, errors, touched, handleBlur, handleChange } = useFormik({
@@ -31,6 +33,7 @@ const LoginScreen = () => {
   const handleLogin = (e) => {
     dispatch(loginReset());
     if (Object.keys(errors).length === 0) {
+      // console.log(values);
       dispatch(login(values));
     }
     e.preventDefault();
@@ -41,7 +44,7 @@ const LoginScreen = () => {
       navigate("/dashboard");
     }
 
-    error && setTimeout(()=>{
+    error && setTimeout(() => {
       dispatch(loginReset());
     }, 2000)
   }, [Info, navigate, error]);
@@ -119,7 +122,7 @@ const LoginScreen = () => {
               >
                 <p className="font-bold text-white text-base2">
                   {loading ? (
-                    <CircularProgress isIndeterminate size={10} color="red"/>
+                    <CircularProgress isIndeterminate size={10} color="red" />
                   ) : (
                     "Sign In"
                   )}

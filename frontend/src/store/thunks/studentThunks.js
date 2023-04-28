@@ -10,7 +10,7 @@ const login = createAsyncThunk(
                 withCredentials: true,
             });
 
-            localStorage.setItem("adminInfo", JSON.stringify(data.user));
+            localStorage.setItem("Info", JSON.stringify(data.user));
 
             return data;
         } catch (err) {
