@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 const MyCoursesScreen = () => {
+  const {
+    Info: { courses },
+  } = useSelector((state) => state.Info)
+  console.log(courses)
   return (
     <div className='flex w-full h-screen overflow-auto'>
       <div className='flex flex-col w-full mx-auto h-full'>
