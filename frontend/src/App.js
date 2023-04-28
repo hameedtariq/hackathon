@@ -18,7 +18,6 @@ function App() {
 
   return (
     <div className="flex w-full min-h-screen overflow-auto">
-      {/* {adminInfo && <SideNav />} */}
 
       < Routes >
         <Route path='/login' element={<LoginScreen />} />
@@ -27,28 +26,29 @@ function App() {
 
       {Info && Info.instructorId &&
         // instructor
-        < Routes >
-          <Route path='/login' element={<LoginScreen />} />
-          <Route path="/student/signup" element={<SignupScreen />} />
-          <Route path='/instructor/dashboard' element={<InstructorDashboard />} />
-        </Routes>
+        <>
+          <SideNav />
+          < Routes >
+            <Route path='/login' element={<LoginScreen />} />
+            <Route path="/student/signup" element={<SignupScreen />} />
+            <Route path='/instructor/dashboard' element={<InstructorDashboard />} />
+          </Routes>
+        </>
       }
 
       {
         Info && Info.rollNumber &&
         // student
-        < Routes >
-          <Route path='/login' element={<LoginScreen />} />
-          <Route path='/student/dashboard' element={<StudentDashboardScreen />} />
-          <Route path='/student/course' element={<MyCoursesScreen />} />
-          <Route path='/student/course/:cid' element={<CourseDetailsScreen />} />
-          <Route path="/student/signup" element={<SignupScreen />} />
-
-
-
-          <Route path='/instructor/dashboard' element={<InstructorDashboard />} />
-
-        </Routes>
+        <>
+          <SideNav />
+          < Routes >
+            <Route path='/login' element={<LoginScreen />} />
+            <Route path='/student/dashboard' element={<StudentDashboardScreen />} />
+            <Route path='/student/course' element={<MyCoursesScreen />} />
+            <Route path='/student/course/:cid' element={<CourseDetailsScreen />} />
+            <Route path="/student/signup" element={<SignupScreen />} />
+          </Routes>
+        </>
       }
 
 
