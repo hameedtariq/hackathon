@@ -11,7 +11,7 @@ const authMiddleware = async(req, res, next)=>{
         // TODO: Handle fake token error
         // TODO: Consider role based access
         try {
-            const {id,isAdmin} = jwt.verify(token, process.env.SECRET_KEY);
+            const {id,isAdmin} = jwt.verify(token, process.env.JWT_SECRET);
             req.user = {id,isAdmin:true};
             next();
             return;

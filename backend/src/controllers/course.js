@@ -4,7 +4,7 @@ const ApiError = require("../utils/ApiError");
 //TODO: ADD AUTHORIZATION
 
 const getAllCourses = async (req, res) => {
-    const courses = await Course.find({})//.populate("instructor");
+    const courses = await Course.find({}).populate("instructor");
     res.status(200).json({ courses });
 };
 
