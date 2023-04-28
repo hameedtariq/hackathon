@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import TextBox2 from '../../components/utils/TextBox2'
 import back from '../../icons/left.png'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import request from '../../utils/request'
 
 const CourseDetailsScreen = ({ type }) => {
     const navigate = useNavigate()
 
-    const [searchParams, setSearchParams] = useSearchParams();
-    const courseId = searchParams.get('cid')
+    const params = useParams();
+    const courseId = params.cid
+    console.log(courseId);
+
+
+    // console.log(window.location.substring(1))
 
     const { Info } = useSelector((state) => state.Info)
 
@@ -28,6 +32,7 @@ const CourseDetailsScreen = ({ type }) => {
         try {
             const { data } = await request.delete(`/courses/${courseId}`)
             setMessage(data.message)
+            navigate("instructor/dashboard")
         } catch (error) {
             setMessage(error.response.data.message)
         }
@@ -39,7 +44,7 @@ const CourseDetailsScreen = ({ type }) => {
         // fetch course details
         try {
             let { data } = await request.get(`/courses/${courseId}`)
-            console.log(data);
+            console.log("fetch", data);
 
             setCourse({
                 courseName: data.courseName,
@@ -49,6 +54,7 @@ const CourseDetailsScreen = ({ type }) => {
             })
         } catch (error) {
             console.log(error);
+            setMessage(error.message)
         }
     }
 
