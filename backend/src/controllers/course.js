@@ -5,7 +5,7 @@ const Instructor = require("../models/Instructor");
 //TODO: ADD AUTHORIZATION
 
 const getAllCourses = async (req, res) => {
-  const courses = await Course.find({})
+  const courses = await Course.find({}).populate("instructorId");
   res.status(200).json({ courses })
 }
 
