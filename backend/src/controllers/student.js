@@ -2,6 +2,7 @@ const Student = require('../models/Student')
 const APIError = require('../utils/ApiError')
 const Course = require('../models/Course')
 const sendToken = require('../utils/jwtToken')
+const Assignment = require('../models/Assignment')
 
 const studentRegisterController = async (req, res) => {
   const { firstName, lastName, email, password, rollNumber } = req.body
@@ -65,4 +66,19 @@ const enrollCourse = async (req, res) => {
   res.status(200).json({ courses: student.courses })
 }
 
-module.exports = { studentRegisterController, getStudentCourses, enrollCourse }
+const getStudentAssignments = async (req, res) => {
+  const { id } = req.user
+  const student = await Student.findById(id).populate('courses.courseId')
+  const enrolledCourses = []
+  student.courses.forEach((course) => {
+    if(course.status === 'enrolled'){
+      enrolledCourses.push(course.courseId._id)
+    }
+  })
+  const assignments = await Assignment.find({
+    courseId: { $in: enrolledCourses },
+  }).populate('courseId')
+  res.status(200).json({ assignments })
+}
+
+module.exports = { studentRegisterController, getStudentCourses, enrollCourse,getStudentAssignments }

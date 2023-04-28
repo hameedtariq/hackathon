@@ -3,13 +3,23 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const CourseCard = ({ courseName, courseCode, _id }) => {
+const CourseCard = ({ courseName, courseCode, _id, type }) => {
   const navigate = useNavigate()
   return (
+
     <>
       <div
         className='flex gap-4 flex-col justify-between w-full bg-white h-fit p-3 rounded-md shadow-6xl cursor-pointer'
-        onClick={() => navigate(`/student/course/${_id}`)}
+        onClick={() => {
+          if (type) {
+
+            navigate(`/instructor/course/${_id}`)
+          }
+          else{
+
+            navigate(`/student/course/${_id}`)
+          }
+        }}
       >
         {/* course name */}
         <div>
@@ -18,6 +28,9 @@ const CourseCard = ({ courseName, courseCode, _id }) => {
           </div>
           <div className='py-1 border-b border-lightborder w-fit pr-5'>
             Course Code: {`${courseCode}`}
+          </div>
+          <div className='py-1 border-b border-lightborder w-fit pr-5'>
+            Credit Hours: {`${3}`}
           </div>
         </div>
 

@@ -48,7 +48,7 @@ const InstructorSideNav = () => {
                         <SideNavLink
                             icon={"course"}
                             label={"Courses"}
-                            link={"instructor/course"}
+                            link={"instructor/course/123"}
                         />
 
                         <SideNavLink

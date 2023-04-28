@@ -36,6 +36,7 @@ function App() {
             <Route path="/student/signup" element={<SignupScreen />} />
             <Route path='/instructor/dashboard' element={<InstructorDashboard />} />
             <Route path='/instructor/createcourse' element={<CreateCourseScreen />} />
+            <Route path='/instructor/course/:cid' element={<CourseDetailsScreen type="instructor"/>} />
           </Routes>
         </>
       }
@@ -50,7 +51,7 @@ function App() {
             <Route path='/student/dashboard' element={<StudentDashboardScreen />} />
             <Route path='/student/course' element={<MyCoursesScreen />} />
             <Route path='/student/course/:cid' element={<CourseDetailsScreen />} />
-            <Route path='/student/course/:cid' element={<AssignmentDetailsScreen />} />
+            <Route path='/student/assignment/:cid' element={<AssignmentDetailsScreen />} />
             <Route path="/student/signup" element={<SignupScreen />} />
           </Routes>
         </>
