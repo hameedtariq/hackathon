@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { loginSlice } from "./slices/studentSlices";
+import { loginSlice, studentSignupSlice } from "./slices/studentSlices";
 
 const initialState = {
     Info: {
@@ -9,7 +9,8 @@ const initialState = {
 
 export const store = configureStore({
     reducer: {
-        Info: loginSlice.reducer
+        Info: loginSlice.reducer,
+        signup: studentSignupSlice.reducer
     },
     preloadedState: initialState,
 });

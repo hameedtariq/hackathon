@@ -55,7 +55,7 @@ const SideNav = () => {
             <SideNavLink
               icon={"course"}
               label={"Courses"}
-              link={"student/courses"}
+              link={"student/course"}
             />
 
             <SideNavLink

@@ -16,7 +16,7 @@ const userLoginController = async (req, res) => {
     const isPasswordValid = await student.comparePassword(password)
     if (!isPasswordValid) throw APIError.badRequest('Invalid password')
     sendToken(student, 200, res)
-  } else if (role === 'instructor') {
+  } else if (role.toLowerCase() === 'instructor') {
     const instructor = await Instructor.findOne({ email })
     if (!instructor)
       throw APIError.notFound('No Instructor exists with the given email')
