@@ -16,7 +16,7 @@ const Header = () => {
                     <Link to="/support">
                         <div className="support flex gap-2 mobile:mt-5">
                             {/* <img src={support} alt="" /> */}
-                            <h2>support</h2>
+                            {/* <h2>support</h2> */}
                         </div>
                     </Link>
                 </div>

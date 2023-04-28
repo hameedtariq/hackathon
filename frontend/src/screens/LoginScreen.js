@@ -41,7 +41,14 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (Info) {
-      navigate('/student/dashboard')
+      if (Info.instructorId) {
+
+        navigate('/instructor/dashboard')
+      }
+      else {
+
+        navigate('/student/dashboard')
+      }
     }
 
     error &&
