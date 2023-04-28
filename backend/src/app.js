@@ -18,7 +18,7 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({ origin: true, credentials: true }))
-
+app.use(express.static('../uploads/'))
 app.get('/', (req, res) => {
   res.send('Hello World')
 })
