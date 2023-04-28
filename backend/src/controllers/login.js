@@ -10,7 +10,7 @@ const userLoginController = async (req, res) => {
     )
   }
   if (role.toLowerCase() === 'student') {
-    const student = await Student.findOne({ email })
+    const student = await Student.findOne({ email }).populate('courses.courseId')
     if (!student)
       throw APIError.notFound('No Student exists with the given email')
     const isPasswordValid = await student.comparePassword(password)

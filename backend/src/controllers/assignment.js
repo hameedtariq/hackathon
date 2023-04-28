@@ -95,6 +95,15 @@ const gradeAssignment = async (req, res) => {
     res.status(200).json({ assignment });
 }
 
+const getCourseAssignments = async (req, res) => {
+    const { courseId } = req.params;
+    const course = await Course.findById(courseId);
+    if(!course) {
+        throw ApiError.badRequest('Course not found');
+    }
+    const assignments = await Assignment.find({ courseId }).populate('courseId');
+    res.status(200).json({ assignments });
+};
 
 
 
@@ -102,5 +111,6 @@ module.exports = {
     getAllAssignments,
     createAssignment,
     submitAssignment,
-    gradeAssignment
+    gradeAssignment,
+    getCourseAssignments
 };

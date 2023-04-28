@@ -1,5 +1,5 @@
 const { userLoginController, logoutController } = require('./login')
-const { studentRegisterController } = require('./student')
+const { studentRegisterController,getStudentCourses,enrollCourse } = require('./student')
 const { instructorRegisterController } = require('./instructor')
 
 module.exports = {
@@ -7,4 +7,6 @@ module.exports = {
   studentRegisterController,
   instructorRegisterController,
   logoutController,
+  getStudentCourses,
+  enrollCourse,
 }
