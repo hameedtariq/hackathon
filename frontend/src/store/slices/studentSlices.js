@@ -77,8 +77,7 @@ const studentSignupSlice = createSlice({
 
 // Actions
 export const { loginReset, logout } = loginSlice.actions
-export const { signupReset } = signupReset.actions
-
+// export const { signupReset } = signupReset.actions
 
 // Reducers
 export { loginSlice, studentSignupSlice }
