@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const courseSchema = new mongoose.Schema(
+const assignmentSchema = new mongoose.Schema(
   {
     title: {
         type: String,
@@ -16,6 +16,10 @@ const courseSchema = new mongoose.Schema(
     },
     fileUrl: {
         type: String,
+        required: true,
+    },
+    deadline: {
+        type: Date,
         required: true,
     },
     submissions: [
@@ -46,5 +50,5 @@ const courseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Course = mongoose.model("Course", courseSchema);
-module.exports = Course;
+const Assignment = mongoose.model("Assignment", assignmentSchema);
+module.exports = Assignment;
