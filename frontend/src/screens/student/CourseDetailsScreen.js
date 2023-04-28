@@ -29,8 +29,12 @@ const CourseDetailsScreen = ({ type }) => {
                             </h1>
 
                             <div className="flex gap-2 actions">
-                                {type == "instructor" && < button className='p-2 bg-viewBlue text-white rounded-[20px] px-5' onClick={editCourseHandler}>Edit</button>}
-                                <button className='p-2 bg-primary text-white rounded-[20px] px-5'>Delete</button>
+                                {
+                                    type == "instructor" && <>
+                                        < button className='p-2 bg-viewBlue text-white rounded-[20px] px-5' onClick={editCourseHandler}>Edit</button>
+                                        <button className='p-2 bg-primary text-white rounded-[20px] px-5'>Delete</button>
+                                    </>
+                                }
                             </div>
                         </div>
                     </div>

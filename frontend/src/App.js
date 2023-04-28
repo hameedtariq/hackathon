@@ -8,6 +8,7 @@ import CourseDetailsScreen from './screens/student/CourseDetailsScreen';
 import MyCoursesScreen from './screens/MyCoursesScreen';
 import InstructorDashboard from './screens/InstructorDashboard';
 import SignupScreen from './screens/SignupScreen';
+import AssignmentDetailsScreen from './screens/student/AssignmentDetailsScreen';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
             <Route path='/student/dashboard' element={<StudentDashboardScreen />} />
             <Route path='/student/course' element={<MyCoursesScreen />} />
             <Route path='/student/course/:cid' element={<CourseDetailsScreen />} />
+            <Route path='/student/course/:cid' element={<AssignmentDetailsScreen />} />
             <Route path="/student/signup" element={<SignupScreen />} />
           </Routes>
         </>
