@@ -1,75 +1,78 @@
-import React from 'react';
-import LoginScreen from './screens/LoginScreen';
-import { Route, Routes } from 'react-router-dom';
-import SideNav from './components/SideNav';
-import { useSelector } from 'react-redux';
-import StudentDashboardScreen from './screens/StudentDashboardScreen';
-import CourseDetailsScreen from './screens/student/CourseDetailsScreen';
-import MyCoursesScreen from './screens/MyCoursesScreen';
-import InstructorDashboard from './screens/InstructorDashboard';
-import SignupScreen from './screens/SignupScreen';
-import AssignmentDetailsScreen from './screens/student/AssignmentDetailsScreen';
-import CreateCourseScreen from './screens/CreateCourseScreen';
-import InstructorSideNav from './components/InstructorSideNav';
-
+import React from 'react'
+import LoginScreen from './screens/LoginScreen'
+import { Route, Routes } from 'react-router-dom'
+import SideNav from './components/SideNav'
+import { useSelector } from 'react-redux'
+import StudentDashboardScreen from './screens/StudentDashboardScreen'
+import CourseDetailsScreen from './screens/student/CourseDetailsScreen'
+import MyCoursesScreen from './screens/MyCoursesScreen'
+import InstructorDashboard from './screens/InstructorDashboard'
+import SignupScreen from './screens/SignupScreen'
+import AssignmentDetailsScreen from './screens/student/AssignmentDetailsScreen'
+import MyAssignmentsScreen from './screens/MyAssignmentsScreen'
 
 function App() {
-
   const { loading, Info, error } = useSelector((state) => {
-    return state.Info;
-  });
+    return state.Info
+  })
 
   return (
-    <div className="flex w-full min-h-screen overflow-auto">
-
-      < Routes >
+    <div className='flex w-full min-h-screen overflow-auto'>
+      <Routes>
         <Route path='/login' element={<LoginScreen />} />
-        <Route path="/student/signup" element={<SignupScreen />} />
+        <Route path='/student/signup' element={<SignupScreen />} />
       </Routes>
 
-      {Info && Info.instructorId &&
+      {Info && Info.instructorId && (
         // instructor
         <>
-          <InstructorSideNav />
-          < Routes >
+          <SideNav />
+          <Routes>
             <Route path='/login' element={<LoginScreen />} />
-            <Route path="/student/signup" element={<SignupScreen />} />
-            <Route path='/instructor/dashboard' element={<InstructorDashboard />} />
-            <Route path='/instructor/createcourse' element={<CreateCourseScreen />} />
-            <Route path='/instructor/course/:cid' element={<CourseDetailsScreen type="instructor"/>} />
+            <Route path='/student/signup' element={<SignupScreen />} />
+            <Route
+              path='/instructor/dashboard'
+              element={<InstructorDashboard />}
+            />
           </Routes>
         </>
-      }
+      )}
 
-      {
-        Info && Info.rollNumber &&
+      {Info && Info.rollNumber && (
         // student
         <>
           <SideNav />
-          < Routes >
+          <Routes>
             <Route path='/login' element={<LoginScreen />} />
-            <Route path='/student/dashboard' element={<StudentDashboardScreen />} />
+            <Route
+              path='/student/dashboard'
+              element={<StudentDashboardScreen />}
+            />
             <Route path='/student/course' element={<MyCoursesScreen />} />
-            <Route path='/student/course/:cid' element={<CourseDetailsScreen />} />
-            <Route path='/student/assignment/:cid' element={<AssignmentDetailsScreen />} />
-            <Route path="/student/signup" element={<SignupScreen />} />
+            <Route
+              path='student/assignments'
+              element={<MyAssignmentsScreen />}
+            />
+            <Route
+              path='/student/course/:cid'
+              element={<CourseDetailsScreen />}
+            />
+            <Route
+              path='/student/course/:cid'
+              element={<AssignmentDetailsScreen />}
+            />
+            <Route path='/student/signup' element={<SignupScreen />} />
           </Routes>
         </>
-      }
-
-
-
-    </div >
-  );
+      )}
+    </div>
+  )
 }
 
-export default App;
+export default App
 
-
-
-
-
-{/* <FontAwesomeIcon icon={faPenNib} />
+{
+  /* <FontAwesomeIcon icon={faPenNib} />
       <h1 className='text-base3'>Hello</h1>
       <h1>
         <FontAwesomeIcon icon={faAtom} />
@@ -101,4 +104,5 @@ export default App;
         }
       >
         Show Toast
-      </Button> */}
+      </Button> */
+}

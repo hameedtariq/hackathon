@@ -1,40 +1,53 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import request from '../utils/request'
 
-const MyCoursesScreen = () => {
-  const {
-    Info: { courses },
-  } = useSelector((state) => state.Info)
+const MyAssignmentsScreen = () => {
+  const [assignments, setAssignments] = useState([])
+  const getAllAssignments = async () => {
+    const { data } = await request.get('/students/assignments')
+    setAssignments(data.assignments)
+  }
+  useEffect(() => {}, [])
   return (
     <div className='flex w-full h-screen overflow-auto'>
       <div className='flex flex-col w-full mx-auto h-full'>
         <div className='w-full m-auto h-full p-5'>
-          <h1 className='font-bold text-base3'>My Courses</h1>0
+          <h1 className='font-bold text-base3'>My Assignments</h1>
+
           {/* map function here */}
           <div
             className={`flex shadow-4xl bg-white my-3 rounded-sm p-3 cursor-pointer border`}
           >
-            {courses.length == 0 ? (
-              <h1>You are not enrolled in any course</h1>
+            {assignments.length == 0 ? (
+              <h1>You don't have any assignment</h1>
             ) : (
-              courses.map((course) => (
+              assignments.map((assignment) => (
                 <div className='flex flex-col items-cente gap-4 w-full px-4 py-2'>
                   <div className='w-full flex flex-col gap-2'>
                     <div className='flex items-center justify-between py-1 border-b border-lightborder w-full pr-5'>
-                      <p className='text-base2 font-semibold'>Course Title:</p>
-                      <p className='text-base3 font-bold'>{`${course.courseId?.courseName}`}</p>
+                      <p className='text-base2 font-semibold'>
+                        Assignment Title:
+                      </p>
+                      <p className='text-base3 font-bold'>{`${assignment.title}`}</p>
                     </div>
                     <div className='flex items-center justify-between py-1 border-b border-lightborder w-full pr-5'>
-                      <p className='text-base2 font-semibold'>Credit Hours:</p>
-                      <p className='text-base3 font-bold'>{`3`}</p>
+                      <p className='text-base2 font-semibold'>
+                        Assignment Description
+                      </p>
+                      <p className='text-base3 font-bold'>{`${assignment.description}`}</p>
                     </div>
                     <div className='flex items-center justify-between py-1 border-b border-lightborder w-full pr-5'>
-                      <p className='text-base2 font-semibold'>Course Code:</p>
-                      <p className='text-base3 font-bold'>{`${course.courseId?.courseCode}`}</p>
+                      <p className='text-base2 font-semibold'>Course Name:</p>
+                      <p className='text-base3 font-bold'>{`${assignment.courseId?.courseName}`}</p>
                     </div>
                     <div className='flex items-center justify-between py-1 border-b border-lightborder w-full pr-5'>
-                      <p className='text-base2 font-semibold'>Course Status:</p>
-                      <p className='text-base3 font-bold'>{`${course.status.toUpperCase()}`}</p>
+                      <p className='text-base2 font-semibold'>
+                        Assignment Deadline:
+                      </p>
+                      <p className='text-base3 font-bold'>{`${new Date(
+                        assignment.deadline
+                      ).toLocaleTimeString()}`}</p>
                     </div>
                   </div>
 
@@ -51,4 +64,4 @@ const MyCoursesScreen = () => {
   )
 }
 
-export default MyCoursesScreen
+export default MyAssignmentsScreen
