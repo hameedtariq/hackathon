@@ -12,6 +12,7 @@ import {
   AlertTitle,
   AlertDescription,
 } from '@chakra-ui/react'
+import { signupReset } from "../store/slices/studentSlices";
 
 const SignupScreen = () => {
 
@@ -45,6 +46,16 @@ const SignupScreen = () => {
     dispatch(studentSignup({ firstName, lastName, rollNumber, email, password, roll }));
     window.scrollTo(0, 0);
   };
+
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+
+        dispatch(signupReset())
+      }, 1000);
+      navigate("/login")
+    }
+  }, [success])
 
   return (
     <>

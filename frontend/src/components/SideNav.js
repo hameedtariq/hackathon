@@ -4,7 +4,7 @@ import logoutLogo from "../icons/logoutIcon.svg";
 import { useDispatch } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { logout } from "../store/slices/studentSlices";
+import { loginReset, logout } from "../store/slices/studentSlices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo from '../icons/logo.png'
 
@@ -19,13 +19,14 @@ const SideNav = () => {
   // });
 
   const handleLogout = () => {
+    console.log("hello");
     dispatch(logout());
+    dispatch(loginReset())
     navigate("/login");
   };
 
   return (
     <>
-
       <div
         id="navLeft"
         className="flex-col items-center w-[300px] min-w-[220px] bg-white shadow-5xl sticky flex top-0 min-h-[650px]"
@@ -35,7 +36,7 @@ const SideNav = () => {
         <div className="flex justify-center items-center brand h-[160px] w-[90%] m-auto mt-2">
           <NavLink to="/dashboard" className="w-[70%]">
             <img
-              className="w-full"
+              className="w-full text-primary"
               src={logo}
               alt=""
             />

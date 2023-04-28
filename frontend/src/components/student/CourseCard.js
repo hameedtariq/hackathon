@@ -19,6 +19,9 @@ const CourseCard = ({ courseName, courseCode, _id }) => {
           <div className='py-1 border-b border-lightborder w-fit pr-5'>
             Course Code: {`${courseCode}`}
           </div>
+          <div className='py-1 border-b border-lightborder w-fit pr-5'>
+            Credit Hours: {`${3}`}
+          </div>
         </div>
 
         <button className='bg-primary w-40 rounded-[20px] m-auto text-white cursor-pointer p-2'>

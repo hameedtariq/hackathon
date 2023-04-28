@@ -41,7 +41,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (Info) {
-      navigate('/dashboard')
+      navigate('/student/dashboard')
     }
 
     error &&
@@ -79,7 +79,7 @@ const LoginScreen = () => {
               <p className='text-base2 text-light'>
                 Don’t have an account?{' '}
                 <label className=' text-primary'>
-                  <Link to={'/signup'}>Sign Up</Link>
+                  <Link to={'/student/signup'}>Sign Up</Link>
                 </label>
               </p>
             </div>

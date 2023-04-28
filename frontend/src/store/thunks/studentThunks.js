@@ -41,6 +41,7 @@ const studentSignup = createAsyncThunk(
   async (signUpCredentials, { rejectWithValue }) => {
     try {
       if (signUpCredentials.instructorId) {
+        console.log("inside");
         const { data } = await request.post(
           '/instructors/register',
           signUpCredentials,
