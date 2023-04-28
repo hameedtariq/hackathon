@@ -19,6 +19,7 @@ const SideNav = () => {
   // });
 
   const handleLogout = () => {
+    console.log("hello");
     dispatch(logout());
     navigate("/login");
   };

@@ -46,6 +46,13 @@ const SignupScreen = () => {
     window.scrollTo(0, 0);
   };
 
+  useEffect(() => {
+    if (success) {
+
+      navigate("/login")
+    }
+  }, [success])
+
   return (
     <>
       <div className="flex flex-col min-h-screen w-full h-fit">
