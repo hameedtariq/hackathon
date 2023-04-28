@@ -13,8 +13,10 @@ import { login } from '../store/thunks/studentThunks'
 
 const LoginScreen = () => {
   const [initialValues] = useState({
-    email: '',
-  })
+    email: "",
+    password: "",
+  });
+  const [role, setRoll] = useState();
 
   const { values, errors, touched, handleBlur, handleChange } = useFormik({
     initialValues: initialValues,
@@ -31,8 +33,8 @@ const LoginScreen = () => {
   const handleLogin = (e) => {
     dispatch(loginReset())
     if (Object.keys(errors).length === 0) {
-      console.log('values')
-      dispatch(login({ ...values, role: 'student' }))
+      // console.log(values);
+      dispatch(login({ ...values, role }));
     }
     e.preventDefault()
   }
@@ -109,10 +111,21 @@ const LoginScreen = () => {
                 errors={errors}
               />
 
-              <div className='forgot w-full text-right'>
-                <p className='text-light text-base2'>
-                  <Link to='forgetPassword'>forgot password?</Link>
-                </p>
+              {/* Role radio buttons */}
+              <div className="flex flex-col mt-5">
+                <label className="text-base1 font-normal block mb-1 mr-auto" htmlFor="password">
+                  Role
+                </label>
+
+                <div className="flex gap-2">
+                  <input type="radio" name="role" value="student" required onChange={(e) => setRoll(e.target.value)} />
+                  <p>Student</p>
+                </div>
+
+                <div className="flex gap-2">
+                  <input type="radio" name="role" value="instructor" onChange={(e) => setRoll(e.target.value)} />
+                  <p>Instructor</p>
+                </div>
               </div>
 
               <button
@@ -121,7 +134,7 @@ const LoginScreen = () => {
               >
                 <p className='font-bold text-white text-base2'>
                   {loading ? (
-                    <CircularProgress isIndeterminate size={10} color='red' />
+                    <CircularProgress isIndeterminate size={10} color="red" />
                   ) : (
                     'Sign In'
                   )}

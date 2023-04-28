@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 
 const loginSchema = Yup.object({
   email: Yup.string().email('Please enter a valid email').lowercase().required('Required'),
+  password: Yup.string().min(8).lowercase().required('Required'),
 })
 
 
