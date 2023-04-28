@@ -4,6 +4,14 @@ const Instructor = require("../models/Instructor");
 
 //TODO: ADD AUTHORIZATION
 
+const getCourse = async (req, res) => {
+    const { id } = req.params;
+    const course = await Course.findById(id).populate("instructorId");
+    if (!course) {
+        throw ApiError.notFound("Course not found");
+    }
+}
+
 const getAllCourses = async (req, res) => {
   const courses = await Course.find({}).populate("instructorId");
   res.status(200).json({ courses })
@@ -66,4 +74,4 @@ const deleteCourse = async (req, res) => {
   res.status(200).json({ course })
 }
 
-module.exports = { getAllCourses, createCourse, updateCourse, deleteCourse }
+module.exports = { getAllCourses, createCourse, updateCourse, deleteCourse,getCourse }
