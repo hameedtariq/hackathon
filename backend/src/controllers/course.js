@@ -1,5 +1,6 @@
 const Course = require("../models/Course");
 const ApiError = require("../utils/ApiError");
+const Instructor = require("../models/Instructor");
 
 //TODO: ADD AUTHORIZATION
 
@@ -9,6 +10,11 @@ const getAllCourses = async (req, res) => {
 };
 
 const createCourse = async (req, res) => {
+    const {id} = req.user;
+    const instructor = await Instructor.findById(id);
+    if(!instructor) {
+        throw ApiError.notFound('You are not logged in as instructor');
+    }
     let courseContent = req.body.courseContent;
     if(courseContent) {
         courseContent = JSON.parse(courseContent);
@@ -18,11 +24,11 @@ const createCourse = async (req, res) => {
             courseContent[index].fileUrl = file.path.replace(/\\/g, '/');
         });
     }
-    const { courseName, courseCode, instructorId } = req.body;
+    const { courseName, courseCode } = req.body;
     const course = await Course.create({
         courseName,
         courseCode,
-        instructorId,
+        instructorId: id,
         courseContent: courseContent
     });
     res.status(201).json({ course });

@@ -1,5 +1,6 @@
 const Student = require('../models/Student')
 const APIError = require('../utils/ApiError')
+const Course = require('../models/Course')
 const sendToken = require('../utils/jwtToken')
 
 const studentRegisterController = async (req, res) => {
@@ -34,4 +35,34 @@ const studentRegisterController = async (req, res) => {
   sendToken(student, 200, res)
 }
 
-module.exports = { studentRegisterController }
+const getStudentCourses = async (req, res) => {
+  const { id } = req.user
+  const student = await Student.findById(id).populate('courses.courseId')
+  res.status(200).json({ courses: student.courses })
+}
+
+const enrollCourse = async (req, res) => {
+  const { id } = req.user
+  const { courseId } = req.params
+  const student = await Student.findById(id)
+  if (!student) {
+    throw APIError.badRequest('Student not found')
+  }
+  const course = await Course.findById(courseId)
+  if (!course) {
+    throw APIError.badRequest('Course not found')
+  }
+  const alreadyEnrolled = student.courses.find(
+    (course) => course.courseId.toString() === courseId
+  )
+  if (alreadyEnrolled) {
+    throw APIError.badRequest('You have already enrolled in this course')
+  }
+  student.courses.push({
+    courseId,
+  })
+  await student.save()
+  res.status(200).json({ courses: student.courses })
+}
+
+module.exports = { studentRegisterController, getStudentCourses, enrollCourse }
