@@ -1,6 +1,11 @@
 const express = require('express')
 const { errorHandler, notFound } = require('./middleware')
-const { instructorRouter, courseRouter, assignmentRouter, studentRouter } = require('./routes')
+const {
+  instructorRouter,
+  courseRouter,
+  assignmentRouter,
+  studentRouter,
+} = require('./routes')
 const { connectDB } = require('./utils')
 require('dotenv').config()
 require('express-async-errors')
